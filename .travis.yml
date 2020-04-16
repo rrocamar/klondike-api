@@ -20,4 +20,4 @@ deploy:
     secure: $HEROKU
   on:
     branch: master
-#  app: klondike-api # No me hace falta ponerlo, porque por defecto es el nombre del artefacto
+  app: klondike-api # En teoria no me hace falta ponerlo, porque por defecto es el nombre del artefacto
