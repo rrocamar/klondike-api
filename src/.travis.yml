@@ -4,7 +4,7 @@ jdk:
 branches:
   only:
     - master
-    - "/^release-[0-999].[0-999]$/"
+    #- "/^release-[0-999].[0-999]$/"
     - develop
 notifications:
   email:
@@ -12,6 +12,6 @@ notifications:
       - r.roca@alumnos.upm.es
 script:
   #Test unitario y de integracion
-  - mvn verify
+  #- mvn verify
   - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
-  - mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
+  #- mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
