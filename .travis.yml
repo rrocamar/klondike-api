@@ -11,4 +11,13 @@ notifications:
 script:
   #Test unitario y de integracion
   - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+  #SonarCloud
   - mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
+#Deploy https://klondike-api.herokuapp.com/api
+deploy:
+  provider: heroku
+  api_key:
+    secure: $HEROKU
+  on:
+    branch: master
+#  app: klondike-api # No me hace falta ponerlo, porque por defecto es el nombre del artefacto
