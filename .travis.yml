@@ -1,23 +1,21 @@
 language: java
 branches:
   only:
-    - master
-    - "/^release-[0-999].[0-999]$/"
-    - develop
+  - master
+  - "/^release-[0-999].[0-999]$/"
+  - develop
 notifications:
   email:
     recipients:
-      - r.roca@alumnos.upm.es
+    - r.roca@alumnos.upm.es
 script:
-  #Test unitario y de integracion
-  - mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
-  #SonarCloud
-  - mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR
-#Deploy https://klondike-api.herokuapp.com/api
+- mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+- mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io
+  -Dsonar.login=$SONAR
 deploy:
   provider: heroku
   api_key:
-    secure: $HEROKU
+    secure: nJ6k5SGcDYQiGtvzN6wp5vis1aKbFHeGdrd2NL7GGQ64uOOQvqKYB69BUOeszrO5hsc4nY9gmBtM4AYJinPUwjv82qTKh6pxcLw2+zx1myHpk1ixJF5FLhqRcveHYHUd2f2zCuYHKrsZRYPm2l52uW2I7ES8edkCuBN4XLLHmJp+6MhW5xl//JJiijciyq0MkGnjE3+nZe/suEVIhGZQ3tM5TvL4Oj3gHsqkcpaQOhKJLSlZ8rBAw5lL3E7QIB/GJEOMGoTqYg9Jy/j/lBMvCQIQpRJpN3kzjuxsQxrIZt4njSJMpb+D4QrtJm+evYkZuJx8pZnjM72BEC1fMHTrw7yyZiNZvPJkqHiywOv4Gg/6phXbPmCKUe49BA5G73ZABzjxYAwHGQulVNrIjKZB2WzxZm6aMhH/9XERxeMG2pcDLrCaFxWBNHgrje8kd0rj5xQD2Y0KhAojhaqRW2H/gAB98PCwT85yCgIb9RPe53N7dbDFq2gOQSdPKvnbq9GyiwH66XbyC4ybWcdZWTv+I40oomjGG/XF52H8h9C8bqrCIE0qjyD07y7GJIjMTzUcvJzC457OZaRrdxYH32PNKCaX6KnDpaqYMhBFxX50B0ZG4quMjLKGpUCIWRznOYAJzNRK9FroW3w5GWh/25HNAB7Q81KMq1x34jhNtExE6qw=
   on:
     branch: master
-  app: klondike-api # En teoria no me hace falta ponerlo, porque por defecto es el nombre del artefacto
+  app: klondike-api
