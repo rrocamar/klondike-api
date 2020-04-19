@@ -1,6 +1,6 @@
 ## [Máster en Ingeniería Web por la Universidad Politécnica de Madrid (miw-upm)](http://miw.etsisi.upm.es)
-## Plantilla para la práctica de Ecosistema (IWVG-ecosystem)
-> Plantilla con Spring básico (API, test) 
+## API Rest para el juego de cartas Klondike
+> Descripción del juego
 
 ## Estado del código
 [![Build Status](https://travis-ci.com/rrocamar/klondike-api.svg?branch=develop)](https://travis-ci.com/rrocamar/klondike-api)
@@ -14,7 +14,6 @@
 * GitHub
 * Travis-CI
 * Sonar Cloud
-* Better Code Hub
 * Spring
 * Heroku
 * OpenAPI-Swagger
