@@ -2,28 +2,41 @@ package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Game;
+import es.upm.miw.klondike.models.GameCaretaker;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 
 public abstract class GameController {
 
-    private static Game game = new Game();
+    private static HashMap<String,Game> playerGame = new HashMap<>();
+    private static HashMap<String, GameCaretaker> playerGameCaretaker = new HashMap<>();
 
-    protected Game getGame(HttpSession session){
-        /*
-        Game game = (Game)session.getAttribute("game");
+    protected Game getGame(String login){
+        Game game = playerGame.get(login);
         if(game == null) {
-            //////////throw new NotFoundException("Game");
-            session.setAttribute("game",new Game());
-            game = (Game)session.getAttribute("game");
+            throw new NotFoundException("Game for user: " + login);
         }
-        */
-        if(game == null)
-            throw new NotFoundException("Game");
         return game;
     }
 
-    protected void setGame(HttpSession session, Game game){
-        GameController.game = game;
+    protected GameCaretaker getGameCaretaker(String login){
+        GameCaretaker caretaker = playerGameCaretaker.get(login);
+        if(caretaker == null) {
+            throw new NotFoundException("Game for user: " + login);
+        }
+        return caretaker;
+    }
+
+    protected void createNewGame(String login, Game game){
+        GameCaretaker gameCaretaker = new GameCaretaker();
+        gameCaretaker.addMemento(game.createMemento());
+        playerGame.put(login, game);
+        playerGameCaretaker.put(login, gameCaretaker);
+    }
+
+    protected void removeGame(String login) {
+        playerGame.remove(login);
+        playerGameCaretaker.remove(login);
     }
 }

@@ -1,9 +1,12 @@
 package es.upm.miw.klondike.models;
 
-public class Foundation extends Pile{
+import java.io.Serializable;
+import java.util.List;
 
-    public Foundation(){
-        super();
+public class Foundation extends Pile implements Serializable {
+
+    public Foundation(List<Card> cards){
+        super(cards);
     }
 
     @Override

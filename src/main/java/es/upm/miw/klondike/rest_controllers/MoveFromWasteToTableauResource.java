@@ -4,11 +4,14 @@ import es.upm.miw.klondike.business_controllers.MoveFromWasteToTableauController
 import es.upm.miw.klondike.dtos.MoveWasteToTableauDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+@PreAuthorize("hasRole('PLAYER')")
 @RestController
 @RequestMapping(MoveFromWasteToTableauResource.MOVES)
 public class MoveFromWasteToTableauResource {
@@ -20,7 +23,8 @@ public class MoveFromWasteToTableauResource {
 
     @PostMapping(value = MoveFromWasteToTableauResource.TYPE_MOVE)
     @ResponseStatus(value = HttpStatus.OK)
-    public void move(@Valid @RequestBody MoveWasteToTableauDto moveDto, HttpSession session) {
-        this.moveFromWasteToTableauController.move(moveDto, session);
+    public void move(@Valid @RequestBody MoveWasteToTableauDto moveDto) {
+        String login = SecurityContextHolder.getContext().getAuthentication().getName();
+        this.moveFromWasteToTableauController.move(moveDto, login);
     }
 }

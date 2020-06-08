@@ -9,8 +9,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class NewGameController extends GameController{
 
-    public GameDto createNewGame(HttpSession session){
-        super.setGame(session, new Game());
-        return new GameDto(super.getGame(session));
+    public void createNewGame(String login){
+        super.createNewGame(login, new Game());
     }
 }

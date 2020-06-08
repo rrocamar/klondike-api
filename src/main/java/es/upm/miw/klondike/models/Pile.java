@@ -1,16 +1,13 @@
 package es.upm.miw.klondike.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class Pile {
+public abstract class Pile implements Cloneable, Serializable {
 
     private List<Card> cards;
-
-    public Pile(){
-        this.cards = new ArrayList<>();
-    }
 
     public Pile(List<Card> cards){
         this.cards = cards;
@@ -35,11 +32,26 @@ public abstract class Pile {
     }
 
     public void putCardOnTop(Card card){
-        assert this.isValidMove(card);
         this.cards.add(card);
     }
 
     public abstract boolean isValidMove(Card card);
+
+    @Override
+    public Object clone() {
+        Pile copy = null;
+        try {
+            copy = (Pile) super.clone();
+        }catch(CloneNotSupportedException ex){
+
+        }
+        List<Card> listOfCopyCards = new ArrayList<>();
+        copy.cards = listOfCopyCards;
+        Iterator<Card>iteratorCards = this.getAllCards();
+        while(iteratorCards.hasNext())
+            listOfCopyCards.add((Card)iteratorCards.next().clone());
+        return copy;
+    }
 
     @Override
     public String toString() {

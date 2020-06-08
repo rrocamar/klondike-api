@@ -5,11 +5,14 @@ import es.upm.miw.klondike.dtos.MoveFoundationToTableauDto;
 import es.upm.miw.klondike.dtos.MoveTableauToTableauDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+@PreAuthorize("hasRole('PLAYER')")
 @RestController
 @RequestMapping(MoveFromTableauToTableauResource.MOVES)
 public class MoveFromTableauToTableauResource {
@@ -22,7 +25,8 @@ public class MoveFromTableauToTableauResource {
 
     @PostMapping(value = MoveFromTableauToTableauResource.TYPE_MOVE)
     @ResponseStatus(value = HttpStatus.OK)
-    public void move(@Valid @RequestBody MoveTableauToTableauDto moveDto, HttpSession session) {
-        this.moveFromTableauToTableauController.move(moveDto, session);
+    public void move(@Valid @RequestBody MoveTableauToTableauDto moveDto) {
+        String login = SecurityContextHolder.getContext().getAuthentication().getName();
+        this.moveFromTableauToTableauController.move(moveDto, login);
     }
 }

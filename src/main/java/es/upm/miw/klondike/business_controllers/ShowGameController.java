@@ -1,6 +1,7 @@
 package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.klondike.dtos.*;
+import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Game;
 import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpSession;
@@ -9,28 +10,40 @@ import java.util.List;
 @Controller
 public class ShowGameController extends GameController{
 
-    public GameDto showGame(HttpSession session) {
-        Game game = getGame(session);
+    public GameDto showGame(String login) {
+        Game game = getGame(login);
         return new GameDto(game);
     }
 
-    public List<TableauDto> showTableaus(HttpSession session) {
-        Game game = getGame(session);
+    public List<TableauDto> showTableaus(String login) {
+        Game game = getGame(login);
         return new GameDto(game).getTableaus();
     }
 
-    public List<FoundationDto> showFoundations(HttpSession session) {
-        Game game = getGame(session);
+    public List<FoundationDto> showFoundations(String login) {
+        Game game = getGame(login);
         return new GameDto(game).getFoundations();
     }
 
-    public StockDto showStock(HttpSession session) {
-        Game game = getGame(session);
+    public StockDto showStock(String login) {
+        Game game = getGame(login);
         return new GameDto(game).getStock();
     }
 
-    public WasteDto showWaste(HttpSession session) {
-        Game game = getGame(session);
+    public WasteDto showWaste(String login) {
+        Game game = getGame(login);
         return new GameDto(game).getWaste();
+    }
+
+    public GameStatusDto showGameStatus(String login) {
+        GameStatusDto gameStatusDto = new GameStatusDto();
+        Game game;
+        try{
+            game = getGame(login);
+            gameStatusDto.setGameInPlay(true);
+            gameStatusDto.setPlayerWin(game.isPlayerWin());
+        }catch(NotFoundException ex){
+        }
+        return gameStatusDto;
     }
 }

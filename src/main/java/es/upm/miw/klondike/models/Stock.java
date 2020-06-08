@@ -1,8 +1,9 @@
 package es.upm.miw.klondike.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Stock extends Pile {
+public class Stock extends Pile  implements Serializable {
 
     public Stock(List<Card> cards){
         super(cards);

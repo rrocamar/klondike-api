@@ -4,6 +4,8 @@ import es.upm.miw.klondike.exceptions.BadRequestException;
 import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Card;
 import es.upm.miw.klondike.models.Game;
+import es.upm.miw.klondike.models.GameCaretaker;
+import es.upm.miw.klondike.models.GameMemento;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpSession;
@@ -11,8 +13,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class RecycleWasteController extends GameController{
 
-    public void move(HttpSession session) {
-        Game game = getGame(session);
+    public void move(String login) {
+        Game game = getGame(login);
         if(game == null)
             throw new NotFoundException("Game");
         if(!game.getStock().isEmpty()||game.getWaste().isEmpty())
@@ -22,5 +24,8 @@ public class RecycleWasteController extends GameController{
             card.setUpturned(false);
             game.getStock().putCardOnTop(card);
         }
+        GameCaretaker gameCaretaker = getGameCaretaker(login);
+        GameMemento gameMemento = game.createMemento();
+        gameCaretaker.addMemento(gameMemento);
     }
 }

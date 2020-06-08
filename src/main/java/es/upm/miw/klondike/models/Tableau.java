@@ -1,8 +1,9 @@
 package es.upm.miw.klondike.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Tableau extends Pile{
+public class Tableau extends Pile implements Serializable {
 
     public Tableau(List<Card> cards){
         super(cards);

@@ -5,6 +5,8 @@ import es.upm.miw.klondike.exceptions.BadRequestException;
 import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Card;
 import es.upm.miw.klondike.models.Game;
+import es.upm.miw.klondike.models.GameCaretaker;
+import es.upm.miw.klondike.models.GameMemento;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpSession;
@@ -12,8 +14,8 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class MoveFromWasteToTableauController extends GameController {
 
-    public void move(MoveWasteToTableauDto moveDto, HttpSession session) {
-        Game game = getGame(session);
+    public void move(MoveWasteToTableauDto moveDto, String login) {
+        Game game = getGame(login);
         if(game.getWaste().isEmpty())
             throw new BadRequestException("Waste is empty: invalid move.");
         Card card = game.getWaste().getCardOnTop();
@@ -22,5 +24,8 @@ public class MoveFromWasteToTableauController extends GameController {
             throw new BadRequestException("Tableau destination: invalid move");
         }
         game.getTableau(moveDto.getTableauDestination()).putCardOnTop(card);
+        GameCaretaker gameCaretaker = getGameCaretaker(login);
+        GameMemento gameMemento = game.createMemento();
+        gameCaretaker.addMemento(gameMemento);
     }
 }

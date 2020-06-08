@@ -3,9 +3,7 @@ package es.upm.miw.klondike.business_controllers;
 import es.upm.miw.klondike.dtos.MoveFoundationToTableauDto;
 import es.upm.miw.klondike.dtos.MoveTableauToTableauDto;
 import es.upm.miw.klondike.exceptions.BadRequestException;
-import es.upm.miw.klondike.models.Card;
-import es.upm.miw.klondike.models.Game;
-import es.upm.miw.klondike.models.Tableau;
+import es.upm.miw.klondike.models.*;
 import org.springframework.stereotype.Controller;
 
 import javax.servlet.http.HttpSession;
@@ -19,8 +17,8 @@ public class MoveFromTableauToTableauController  extends GameController {
             tableau.putCardOnTop(cards.pop());
     }
 
-    public void move(MoveTableauToTableauDto moveDto, HttpSession session) {
-        Game game = getGame(session);
+    public void move(MoveTableauToTableauDto moveDto, String login) {
+        Game game = getGame(login);
         Stack<Card> cardStack = new Stack<>();
         for(int i=1; i <= moveDto.getNumberOfCards(); i++){
             if(game.getTableau(moveDto.getTableauSource()).isEmpty()){
@@ -48,5 +46,8 @@ public class MoveFromTableauToTableauController  extends GameController {
             card.setUpturned(true);
             game.getTableau(moveDto.getTableauSource()).putCardOnTop(card);
         }
+        GameCaretaker gameCaretaker = this.getGameCaretaker(login);
+        GameMemento gameMemento = game.createMemento();
+        gameCaretaker.addMemento(gameMemento);
     }
 }

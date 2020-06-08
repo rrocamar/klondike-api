@@ -1,11 +1,12 @@
 package es.upm.miw.klondike.models;
 
-public class Card {
+import java.io.Serializable;
+
+
+public class Card implements Cloneable, Serializable {
 
     private Rank rank;
-
     private Suite suite;
-
     private boolean upturned;
 
     public Card(Rank rank, Suite suite){
@@ -34,6 +35,13 @@ public class Card {
 
     public void setUpturned(boolean upturned) {
         this.upturned = upturned;
+    }
+
+    @Override
+    public Object clone() {
+        Card copy = new Card(this.getRank(),this.getSuite());
+        copy.setUpturned(this.isUpturned());
+        return copy;
     }
 
     @Override
