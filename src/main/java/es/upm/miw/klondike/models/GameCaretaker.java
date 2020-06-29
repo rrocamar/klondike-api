@@ -5,12 +5,9 @@ import java.util.List;
 import java.util.Stack;
 
 public class GameCaretaker {
+
     private ArrayList<GameMemento> states;
     private int actual;
-
-    private static int NO_DIRECCTION = -1;
-    private static int FORWARD = 1;
-    private static int BACKWARD = 2;
 
     private int direction;
     public GameCaretaker(){
@@ -34,7 +31,7 @@ public class GameCaretaker {
     }
 
     public GameMemento getRedoMemento(){
-        assert this.actual > 0 && this.actual<this.states.size();
+        assert this.actual >= 0 && this.actual<this.states.size();
         this.actual ++;
         GameMemento gameMemento = this.states.get(actual);
         return gameMemento;

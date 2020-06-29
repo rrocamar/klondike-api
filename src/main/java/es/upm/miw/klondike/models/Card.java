@@ -1,9 +1,12 @@
 package es.upm.miw.klondike.models;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public class Card implements Cloneable, Serializable {
+
+    private static final long serialVersionUID = -2393155049458730913l;
 
     private Rank rank;
     private Suite suite;
@@ -35,6 +38,21 @@ public class Card implements Cloneable, Serializable {
 
     public void setUpturned(boolean upturned) {
         this.upturned = upturned;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Card card = (Card) o;
+        return upturned == card.upturned &&
+                rank == card.rank &&
+                suite == card.suite;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rank, suite, upturned);
     }
 
     @Override

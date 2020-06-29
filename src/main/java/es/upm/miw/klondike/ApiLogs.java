@@ -7,7 +7,7 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
-@Profile("dev")
+@Profile("prod")
 @Component
 @Aspect
 public class ApiLogs {

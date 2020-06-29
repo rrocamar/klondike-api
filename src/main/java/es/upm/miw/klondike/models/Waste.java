@@ -11,6 +11,6 @@ public class Waste extends Pile implements Serializable {
 
     @Override
     public boolean isValidMove(Card card) {
-        return true;
+        return card.isUpturned();
     }
 }

@@ -2,6 +2,8 @@ package es.upm.miw.klondike.dtos;
 
 import es.upm.miw.klondike.models.Card;
 
+import java.util.Objects;
+
 public class CardDto {
 
     private int rank;
@@ -44,6 +46,21 @@ public class CardDto {
 
     public void setUpturned(boolean upturned) {
         this.upturned = upturned;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CardDto cardDto = (CardDto) o;
+        return rank == cardDto.rank &&
+                upturned == cardDto.upturned &&
+                Objects.equals(suite, cardDto.suite);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(rank, suite, upturned);
     }
 
     @Override

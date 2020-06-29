@@ -39,9 +39,9 @@ public class RestService {
         return false;
     }
 
-    private WebTestClient login(Role role, String mobile, String pass, WebTestClient webTestClient) {
+    private WebTestClient login(Role role, String login, String pass, WebTestClient webTestClient) {
         if (!this.isRole(role)) {
-            return login(mobile, pass, webTestClient);
+            return login(login, pass, webTestClient);
         } else {
             return webTestClient.mutate()
                     .defaultHeader("Authorization", "Bearer " + this.tokenDto.getToken()).build();

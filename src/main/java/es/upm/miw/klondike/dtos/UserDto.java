@@ -43,6 +43,7 @@ public class UserDto {
 
     public UserDto(User user) {
         this.login = user.getLogin();
+        this.password = user.getPassword();
         this.name = user.getName();
         this.surname = user.getSurname();
         this.email = user.getEmail();

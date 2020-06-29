@@ -45,7 +45,7 @@ public class LoginResource {
     }
 
     @GetMapping(value = LOGIN_AVAILABLE)
-    public UserMinimunDto register(@PathVariable String login) {
+    public UserMinimunDto available(@PathVariable String login) {
         return this.loginController.isAvailable(login);
     }
 

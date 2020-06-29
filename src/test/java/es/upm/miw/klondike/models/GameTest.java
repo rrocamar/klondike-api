@@ -11,7 +11,6 @@ class GameTest {
     private int initialStockCardsExpected = 24;
     @BeforeEach
     public void before(){
-        System.out.println("Se ejecuta Before");
         OUTGame = new Game();
     }
 
