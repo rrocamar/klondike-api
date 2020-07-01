@@ -64,7 +64,6 @@ class MoveFromTableauToFoundationResourceIT extends MoveResourceIT {
         super.testPileCards(tableauDto,4, cardOnTop);
         foundationDto = super.getFoundationDto(numberOfFoundationDestination);
         this.testPileCards(foundationDto, 0, null);
-
     }
 
     @Test

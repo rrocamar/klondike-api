@@ -33,14 +33,6 @@ public class LoginController {
         return new TokenDto(jwtService.createToken(user.getLogin(), user.getName() + " " + user.getSurname(), roles));
     }
 
-    public UserDto readUser(String login, String claimLogin, List<String> claimRoles) {
-        User user = this.userDao.findByLogin(login)
-                .orElseThrow(() -> new NotFoundException("User:" + login));
-        this.authorized(claimLogin, claimRoles, login, Arrays.stream(user.getRoles())
-                .map(Role::roleName).collect(Collectors.toList()));
-        return new UserDto(user);
-    }
-
     private void authorized(String claimUsername, List<String> claimRoles, String username, List<String> userRoles) {
         if (claimRoles.contains(Role.PLAYER.roleName()) || claimUsername.equals(username)) {
             return;

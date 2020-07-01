@@ -1,15 +1,14 @@
 package es.upm.miw.klondike.rest_controllers;
 
 import es.upm.miw.klondike.dtos.*;
-import es.upm.miw.klondike.models.*;
-import org.assertj.core.util.Arrays;
+import es.upm.miw.klondike.models.Card;
+import es.upm.miw.klondike.models.Rank;
+import es.upm.miw.klondike.models.Suite;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
