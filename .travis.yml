@@ -9,7 +9,7 @@ notifications:
     recipients:
     - r.roca@alumnos.upm.es
 script:
-- mvn org.jacoco:jacoco-maven-plugin:prepare-agent verify
+- mvn org.jacoco:jacoco-maven-plugin:prepare-agent compile
 - mvn sonar:sonar -Dsonar.organization=rrocamar-github -Dsonar.host.url=https://sonarcloud.io
   -Dsonar.login=$SONAR
 deploy:
@@ -19,3 +19,5 @@ deploy:
   app: klondike-api
   on:
     repo: rrocamar/klondike-api
+services:
+  - mysql
