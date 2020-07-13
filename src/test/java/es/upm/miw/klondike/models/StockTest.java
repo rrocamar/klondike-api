@@ -41,7 +41,6 @@ class StockTest {
         assertFalse(this.OUTEmptyStock.isEmpty());
         assertEquals(randomCard,this.OUTEmptyStock.getCardOnTop());
         assertTrue(this.OUTEmptyStock.isEmpty());
-        //assertThrows(Error.class, ()-> this.OUTEmptyFoundation.getCardOnTop());
         this.OUTStock.putCardOnTop(randomCard);
         assertFalse(this.OUTStock.isEmpty());
         assertEquals(randomCard,this.OUTStock.getCardOnTop());

@@ -40,7 +40,6 @@ class WasteTest {
         assertFalse(this.OUTEmptyWaste.isEmpty());
         assertEquals(randomCard,this.OUTEmptyWaste.getCardOnTop());
         assertTrue(this.OUTEmptyWaste.isEmpty());
-        //assertThrows(Error.class, ()-> this.OUTEmptyFoundation.getCardOnTop());
         this.OUTWaste.putCardOnTop(randomCard);
         assertFalse(this.OUTWaste.isEmpty());
         assertEquals(randomCard,this.OUTWaste.getCardOnTop());

@@ -1,21 +1,13 @@
 package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.TestConfig;
-import es.upm.miw.klondike.dtos.CardDto;
-import es.upm.miw.klondike.dtos.FoundationDto;
 import es.upm.miw.klondike.dtos.MoveFoundationToTableauDto;
-import es.upm.miw.klondike.dtos.TableauDto;
 import es.upm.miw.klondike.exceptions.BadRequestException;
 import es.upm.miw.klondike.models.*;
-import es.upm.miw.klondike.rest_controllers.MoveFromFoundationToTableauResource;
-import es.upm.miw.klondike.rest_controllers.RedoMoveResource;
-import es.upm.miw.klondike.rest_controllers.UndoMoveResource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.reactive.function.BodyInserters;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestConfig
 class RedoMoveControllerIT extends MoveControllerIT {

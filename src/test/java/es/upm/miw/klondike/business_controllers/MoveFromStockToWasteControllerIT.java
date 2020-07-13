@@ -1,17 +1,12 @@
 package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.TestConfig;
-import es.upm.miw.klondike.dtos.CardDto;
-import es.upm.miw.klondike.dtos.MoveFoundationToTableauDto;
-import es.upm.miw.klondike.dtos.StockDto;
-import es.upm.miw.klondike.dtos.WasteDto;
 import es.upm.miw.klondike.exceptions.BadRequestException;
 import es.upm.miw.klondike.models.*;
-import es.upm.miw.klondike.rest_controllers.MoveFromStockToWasteResource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestConfig
 class MoveFromStockToWasteControllerIT extends MoveControllerIT {

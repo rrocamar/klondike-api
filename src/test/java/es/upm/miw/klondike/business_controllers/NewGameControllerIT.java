@@ -2,20 +2,15 @@ package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.TestConfig;
 import es.upm.miw.klondike.daos.UserDao;
-import es.upm.miw.klondike.dtos.GameMinimunDto;
 import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Game;
-import es.upm.miw.klondike.models.Role;
 import es.upm.miw.klondike.models.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestConfig
 class NewGameControllerIT {

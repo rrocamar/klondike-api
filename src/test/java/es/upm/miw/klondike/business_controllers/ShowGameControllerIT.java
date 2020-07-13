@@ -3,11 +3,8 @@ package es.upm.miw.klondike.business_controllers;
 import es.upm.miw.TestConfig;
 import es.upm.miw.klondike.dtos.*;
 import es.upm.miw.klondike.models.Card;
-import es.upm.miw.klondike.models.Game;
 import es.upm.miw.klondike.models.Rank;
 import es.upm.miw.klondike.models.Suite;
-import es.upm.miw.klondike.rest_controllers.OpenGameResource;
-import es.upm.miw.klondike.rest_controllers.ShowGameResource;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 

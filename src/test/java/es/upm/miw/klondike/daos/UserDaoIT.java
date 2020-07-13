@@ -24,7 +24,7 @@ class UserDaoIT {
     @BeforeEach
     void seedDb() {
         this.user = User.builder().dni("12345678").
-                active(true).login("usuario").password("usuario").name("Nombre de Usuaro").
+                active(true).login("userForUserDaoTest").password("usuario").name("Nombre de Usuaro").
                 surname("Apellidos del Usuario").email("usuario@klondike.es").build();
 
         this.OUTUserDao.save(user);

@@ -1,17 +1,13 @@
 package es.upm.miw.klondike.business_controllers;
 
 import es.upm.miw.TestConfig;
-import es.upm.miw.klondike.dtos.MoveWasteToTableauDto;
-import es.upm.miw.klondike.dtos.StockDto;
-import es.upm.miw.klondike.dtos.WasteDto;
 import es.upm.miw.klondike.exceptions.BadRequestException;
-import es.upm.miw.klondike.models.*;
-import es.upm.miw.klondike.rest_controllers.RecycleWasteResource;
+import es.upm.miw.klondike.models.Stock;
+import es.upm.miw.klondike.models.Waste;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @TestConfig
 class RecycleWasteControllerIT extends MoveControllerIT {

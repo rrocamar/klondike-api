@@ -8,7 +8,6 @@ import es.upm.miw.klondike.dtos.UserMinimunDto;
 import es.upm.miw.klondike.exceptions.NotFoundException;
 import es.upm.miw.klondike.models.Role;
 import es.upm.miw.klondike.models.User;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
